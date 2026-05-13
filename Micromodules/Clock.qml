@@ -67,8 +67,8 @@ Item {
                     start: Qt.point(parent.width/2, 0)
                     end: Qt.point(parent.width/2, parent.height)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: Colors.tx1 }
-                        GradientStop { position: 1.0; color: Colors.fg1 }
+                        GradientStop { position: 0.0; color: Colors.ac2 }
+                        GradientStop { position: 0.75; color: Colors.fg1 }
                     }
                 }
             }

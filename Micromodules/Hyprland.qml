@@ -9,13 +9,13 @@ Item {
     id: hyprland
 
     width: background.width
-    height: Style.barHeight - Style.barMargin*2
+    height: Style.barHeight - Style.bar.margin*2
 
     Rectangle {
         id: background
         anchors.centerIn: parent
         
-        width: contentHolder.width + Style.widthOffset
+        width: contentHolder.width + Style.bar.margin
         height: parent.height
 
         radius: Style.cornerRadius
@@ -24,14 +24,19 @@ Item {
         RowLayout {
             id: contentHolder
             anchors.centerIn: parent
-           
+
+            height: parent.height
+            spacing: 0
+
             Repeater {
                 model: Hyprland.workspaces
                 delegate: Rectangle {
                     id: hyprWorkspace
                     
-                    width: 30
-                    height: 30
+                    width: hyprWorkspace.height
+                    height: parent.height * 0.7
+                    Layout.fillWidth: true 
+                    Layout.margins: Style.barMargin
 
                     property var workspace: modelData
                     property bool isFocused: Hyprland.focusedWorkspace === workspace

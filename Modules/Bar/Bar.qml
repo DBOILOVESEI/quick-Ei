@@ -7,7 +7,7 @@ import qs.Config
 import "../../Micromodules" as Micromodules
 
 PanelWindow {
-    implicitHeight: Style.barHeight
+    implicitHeight: Style.bar.height
     anchors {
         top: true
         left: true
@@ -18,7 +18,7 @@ PanelWindow {
     
     RowLayout {
         anchors.centerIn: parent
-        anchors.margins: Style.barMargin
+        anchors.margins: Style.bar.margin
 
         // Hyprland has its own margin, so we remove bottom margin
         // The margin should be Hyprland.general.gaps_out. Make sure it's
@@ -33,6 +33,8 @@ PanelWindow {
         Micromodules.Clock {}
 
         Item { Layout.fillWidth: true }
+
+        Micromodules.Battery {}
 
     }
 }
