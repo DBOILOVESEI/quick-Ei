@@ -9,7 +9,7 @@ Item {
     id: clock
 
     width: background.width
-    height: background.height
+    height: Style.barHeight - Style.barMargin*2
 
     property var currentTime: new Date()
 
@@ -26,7 +26,8 @@ Item {
         anchors.centerIn: parent
 
         width: contentHolder.width + Style.widthOffset
-        height: contentHolder.height + Style.heightOffset
+        height: parent.height
+        
         radius: Style.cornerRadius
         color: Colors.bg1
 
@@ -43,20 +44,23 @@ Item {
                 font {
                     family: Style.fontFamily;
                     weight: 900;
-                    pixelSize: Style.fontSize
+                    pixelSize: Style.fontSize2
                 }
                 text: Qt.formatDateTime(new Date(), "󰥔 HH:mm")
             }
 
             Text {
                 id: date
+
+                text: Qt.formatDateTime(new Date(), " dddd, dd/MM")
+
                 font {
                     family: Style.fontFamily;
                     weight: 900;
-                    pixelSize: Style.fontSize * 0.8
+                    pixelSize: Style.fontSize3
                 }
-                text: Qt.formatDateTime(new Date(), " dddd, dd/MM")
-
+                
+                // TODO: Move this to Style.qml later
                 LinearGradient {
                     anchors.fill: parent
                     source: parent

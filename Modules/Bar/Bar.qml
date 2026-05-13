@@ -17,6 +17,13 @@ PanelWindow {
     color: "transparent"
     
     RowLayout {
+        anchors.centerIn: parent
+        anchors.margins: Style.barMargin
+
+        // Hyprland has its own margin, so we remove bottom margin
+        // The margin should be Hyprland.general.gaps_out. Make sure it's
+        // The same as barMargin, or else I might tweak out.
+        anchors.bottomMargin: 0 
         anchors.fill: parent
 
         Micromodules.Hyprland {}

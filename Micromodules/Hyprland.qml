@@ -6,53 +6,66 @@ import Quickshell.Hyprland
 import qs.Config
 
 Item {
-    id: root
-    implicitWidth: mainLayout.width
-    implicitHeight: 40
+    id: hyprland
+
+    width: background.width
+    height: Style.barHeight - Style.barMargin*2
 
     Rectangle {
         id: background
-        anchors.fill: parent
-        color: Colors.bg1
+        anchors.centerIn: parent
+        
+        width: contentHolder.width + Style.widthOffset
+        height: parent.height
+
         radius: Style.cornerRadius
+        color: Colors.bg1
 
         RowLayout {
-            id: mainLayout
+            id: contentHolder
             anchors.centerIn: parent
-            spacing: Style.spacing
-
+           
             Repeater {
-                // We use Hyprland.workspaces which is a list of active workspaces
                 model: Hyprland.workspaces
-
                 delegate: Rectangle {
-                    id: workspaceDot
+                    id: hyprWorkspace
                     
-                    // Access workspace data from the model
+                    width: 30
+                    height: 30
+
                     property var workspace: modelData
                     property bool isFocused: Hyprland.focusedWorkspace === workspace
-
-                    width: isFocused ? 24 : 12
-                    height: 12
-                    radius: height / 2
+                    property bool isHovered: false
                     
-                    color: isFocused ? Colors.ac2 : (workspace.clients.length > 0 ? Colors.fg1 : Colors.bg2)
+                    radius: Style.cornerRadius
+
+                    color: isFocused? Colors.fg1 : ( isHovered? Colors.fg1 : Colors.bg2)
 
                     Text {
                         anchors.centerIn: parent
-                        text: workspace.name
-                        font.pixelSize: 8
-                        color: Colors.bg1
-                        visible: isFocused
-                    }
 
-                    // Click to switch workspace
+                        text: isFocused? "" : ""
+                        color: isFocused? Colors.tx1 : (isHovered? Colors.tx1 : Colors.tx2)
+
+                        font {
+                            pixelSize: Style.fontSize2;
+                            weight: 500;
+                            family: Style.fontFamily
+                        }
+
+                    }                    
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: workspace.focus()
+                        hoverEnabled: true
+                        
+                        onClicked: Hyprland.dispatch("workspace " + workspace.name)
+                        onEntered: isHovered = true
+                        onExited: isHovered = false
                     }
                 }
+
             }
         }
     }
+    
 }
