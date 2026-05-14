@@ -11,8 +11,9 @@ QtObject {
     readonly property int barHeight: 60
     readonly property int barMargin: style.margin4
     readonly property int barWidgetsRadius: style.radius4
-    readonly property int barWidgetsHeight: style.barHeight - style.barMargin*2
     readonly property int barWidgetsMargin: style.margin4
+    readonly property int barWidgetsHeight: style.barHeight - style.barWidgetsMargin*2
+    readonly property int barWidgetsWidth: style.barWidgetsMargin*2
 
     // Shapes
 

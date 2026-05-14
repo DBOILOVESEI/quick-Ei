@@ -8,17 +8,22 @@ import qs.Config
 Item {
     id: hyprland
 
-    width: background.width
-    height: Style.barWidgetsHeight
+    implicitWidth: background.width
+    implicitHeight: background.height
+
+    // STYLE MATH:
+    // 1. Workspaces expand x on all sides
+    // 2. Right of workspace i and Left of workspace j create x*2
+    // 3. Add x*2 to the width of the background
 
     Rectangle {
         id: background
         anchors.centerIn: parent
         
-        width: contentHolder.width
-        height: parent.height
+        width: contentHolder.width + Style.barMargin
+        height: Style.barWidgetsHeight
 
-        radius: Style.radius4
+        radius: Style.barWidgetsRadius
         color: Colors.bg1
 
         RowLayout {
@@ -33,16 +38,15 @@ Item {
                 delegate: Rectangle {
                     id: hyprWorkspace
                     
-                    width: hyprWorkspace.height
-                    height: parent.height * 0.7
-                    Layout.fillWidth: true 
-                    //Layout.margins: Style.barMargin
+                    height: background.height - Style.barWidgetsMargin*2
+                    width: height
+                    Layout.margins: Style.barWidgetsMargin/2
 
                     property var workspace: modelData
                     property bool isFocused: Hyprland.focusedWorkspace === workspace
                     property bool isHovered: false
                     
-                    radius: Style.cornerRadius
+                    radius: Style.barWidgetsRadius
 
                     color: isFocused? Colors.fg1 : ( isHovered? Colors.fg1 : Colors.bg2)
 
@@ -53,8 +57,7 @@ Item {
                         color: isFocused? Colors.tx1 : (isHovered? Colors.tx1 : Colors.tx2)
 
                         font {
-                            pixelSize: Style.fontSize2;
-                            weight: fontWeight1;
+                            pixelSize: Style.fontSize1;
                             family: Style.fontFamily
                         }
 

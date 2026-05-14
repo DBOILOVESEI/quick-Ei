@@ -15,15 +15,15 @@ Item {
         clock.currentTime = new Date()
     }
 
-    width: contentHolder.width + Style.barWidgetsMargin*2
-    height: Style.barWidgetsHeight + Style.barWidgetsMargin*2
+    width: background.width
+    height: background.height
 
     Rectangle {
         id: background
         anchors.centerIn: parent
 
-        width: parent.width
-        height: parent.height
+        width: contentHolder.width + Style.barWidgetsWidth
+        height: Style.barWidgetsHeight
         
         radius: Style.barWidgetsRadius
         color: Colors.bg1
