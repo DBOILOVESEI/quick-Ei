@@ -7,7 +7,7 @@ import qs.Config
 import "../../Micromodules" as Micromodules
 
 PanelWindow {
-    implicitHeight: Style.bar.height
+    height: Style.barHeight
     anchors {
         top: true
         left: true
@@ -18,7 +18,7 @@ PanelWindow {
     
     RowLayout {
         anchors.centerIn: parent
-        anchors.margins: Style.bar.margin
+        anchors.margins: Style.barMargin
 
         // Hyprland has its own margin, so we remove bottom margin
         // The margin should be Hyprland.general.gaps_out. Make sure it's

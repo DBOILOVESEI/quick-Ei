@@ -1,47 +1,65 @@
-// GLOBAL STYLE
-// This can be for theme switcher (or not)
-
 pragma Singleton
-
 import QtQuick
 import Quickshell
 
-Singleton {
+QtObject {
     id: style
 
-    // how tf should I go about making this file
+    // Shell and Layout
 
-    // Bar
-    readonly property var bar: QtObject {
-        readonly property int height: 60;
-        readonly property int margin: 5;
-        readonly property int spacing: 10;
-        readonly property int radius: 4
-    }
+    // GLOBAL SETTINGS - BAR
     readonly property int barHeight: 60
-    readonly property int barMargin: 5
+    readonly property int barMargin: style.margin4
+    readonly property int barWidgetsRadius: style.radius4
+    readonly property int barWidgetsHeight: style.barHeight - style.barMargin*2
+    readonly property int barWidgetsMargin: style.margin4
+
+    // Shapes
+
+    readonly property int radius1: 100 // Pill shape
+    readonly property int radius2: 16  // Very rounded
+    readonly property int radius3: 8   // Standard container
+    readonly property int radius4: 4   // Subtle rounding
+    readonly property int radius5: 0   // Sharp corners
+
+    // Margins (External Spacing)
+    readonly property int margin1: 24
+    readonly property int margin2: 16
+    readonly property int margin3: 8
+    readonly property int margin4: 4
+    readonly property int margin5: 2
+
+    // Padding (Internal Spacing / Offsets)
+    readonly property int padding1: 30
+    readonly property int padding2: 20
+    readonly property int padding3: 12
+    readonly property int padding4: 8
+    readonly property int padding5: 4
 
     // Text
-    readonly property var text: QtObject {
-        property string fontFamily: "JetBrainsMono Nerd Font Propo"
-        property int fontSize: 18
-        property int fontSize2: 16 // In case you want to fit fontSize3 Text into the same box
-        property int fontSize3: 14 // Same as above, just switch places yeah
-        property int fontSize4: 12 // I haven't thought of a use case for this yet
-    }
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
-    readonly property int fontSize: 18
-    readonly property int fontSize2: 16 // In case you want to fit fontSize3 Text into the same box
-    readonly property int fontSize3: 14 // Same as above, just switch places yeah
-    readonly property int fontSize4: 12 // I haven't thought of a use case for this yet
-
-    // Components
-    readonly property int widthOffset: 20
-    readonly property int heightOffset: 10
-    readonly property int cornerRadius: 4
-
-    // Colors and gradients (Based on Colors.qml file)
     
+    readonly property int fontSize1: 20
+    readonly property int fontSize2: 18
+    readonly property int fontSize3: 16
+    readonly property int fontSize4: 14
+    readonly property int fontSize5: 12
+
+    readonly property int fontWeight1: 900
+    readonly property int fontWeight2: 700
+    readonly property int fontWeight3: 500
+    readonly property int fontWeight4: 300
+    readonly property int fontWeight5: 100
+
+    // Gradients
+    readonly property list<GradientStop> gradientText: [
+        GradientStop { position: 0.0; color: Colors.fg2 },
+        GradientStop { position: 1.0; color: Colors.ac2 }
+    ]
 
     // Animations
+    readonly property int animSuperFast: 50
+    readonly property int animFast: 150
+    readonly property int animSlow: 300
+    readonly property int animSuperSlow: 500
 }

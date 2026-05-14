@@ -9,16 +9,16 @@ Item {
     id: hyprland
 
     width: background.width
-    height: Style.barHeight - Style.bar.margin*2
+    height: Style.barWidgetsHeight
 
     Rectangle {
         id: background
         anchors.centerIn: parent
         
-        width: contentHolder.width + Style.bar.margin
+        width: contentHolder.width
         height: parent.height
 
-        radius: Style.cornerRadius
+        radius: Style.radius4
         color: Colors.bg1
 
         RowLayout {
@@ -36,7 +36,7 @@ Item {
                     width: hyprWorkspace.height
                     height: parent.height * 0.7
                     Layout.fillWidth: true 
-                    Layout.margins: Style.barMargin
+                    //Layout.margins: Style.barMargin
 
                     property var workspace: modelData
                     property bool isFocused: Hyprland.focusedWorkspace === workspace
@@ -54,7 +54,7 @@ Item {
 
                         font {
                             pixelSize: Style.fontSize2;
-                            weight: 500;
+                            weight: fontWeight1;
                             family: Style.fontFamily
                         }
 

@@ -8,27 +8,24 @@ import qs.Config
 Item {
     id: clock
 
-    width: background.width
-    height: Style.barHeight - Style.barMargin*2
-
     property var currentTime: new Date()
+    property int updateInterval: 1000
 
-    Timer {
-        interval: 1000
-        repeat: true
-        running: true
-        triggeredOnStart: true
-        onTriggered: clock.currentTime = new Date()
+    function updateTime() {
+        clock.currentTime = new Date()
     }
-    
+
+    width: contentHolder.width + Style.barWidgetsMargin*2
+    height: Style.barWidgetsHeight + Style.barWidgetsMargin*2
+
     Rectangle {
         id: background
         anchors.centerIn: parent
 
-        width: contentHolder.width + Style.widthOffset
+        width: parent.width
         height: parent.height
         
-        radius: Style.cornerRadius
+        radius: Style.barWidgetsRadius
         color: Colors.bg1
 
         Column {
@@ -43,20 +40,20 @@ Item {
                 color: Colors.tx1
                 font {
                     family: Style.fontFamily;
-                    weight: 900;
+                    weight: Style.fontWeight1;
                     pixelSize: Style.fontSize2
                 }
-                text: Qt.formatDateTime(new Date(), "󰥔 HH:mm")
+                text: Qt.formatDateTime(currentTime, "󰥔 HH:mm:ss")
             }
 
             Text {
                 id: date
 
-                text: Qt.formatDateTime(new Date(), " dddd, dd/MM")
+                text: Qt.formatDateTime(currentTime, " dddd, dd/MM")
 
                 font {
                     family: Style.fontFamily;
-                    weight: 900;
+                    weight: Style.fontWeight1;
                     pixelSize: Style.fontSize3
                 }
                 
@@ -67,12 +64,20 @@ Item {
                     start: Qt.point(parent.width/2, 0)
                     end: Qt.point(parent.width/2, parent.height)
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: Colors.ac2 }
-                        GradientStop { position: 0.75; color: Colors.fg1 }
+                        GradientStop { position: 0.0; color: Colors.fg2 }
+                        GradientStop { position: 1.0; color: Colors.ac2 }
                     }
                 }
             }
         }
+    }
+
+    Timer {
+        interval: updateInterval
+        repeat: true
+        running: true
+        triggeredOnStart: true
+        onTriggered: updateTime()
     }
     
 }
