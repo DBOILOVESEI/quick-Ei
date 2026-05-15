@@ -38,22 +38,22 @@ Item {
                 delegate: Rectangle {
                     id: hyprWorkspace
                     
+                    property var workspace: modelData
+                    property bool isFocused: Hyprland.focusedWorkspace === workspace
+                    property bool isHovered: false
+
                     height: background.height - Style.barWidgetsMargin*2
                     width: height
                     Layout.margins: Style.barWidgetsMargin/2
 
-                    property var workspace: modelData
-                    property bool isFocused: Hyprland.focusedWorkspace === workspace
-                    property bool isHovered: false
-                    
                     radius: Style.barWidgetsRadius
 
-                    color: isFocused? Colors.fg1 : ( isHovered? Colors.fg1 : Colors.bg2)
+                    color: isFocused? Colors.bg2 : ( isHovered? Colors.bg2 : Colors.bg1 )
 
                     Text {
                         anchors.centerIn: parent
 
-                        text: isFocused? "" : ""
+                        text: isFocused? "" : ""
                         color: isFocused? Colors.tx1 : (isHovered? Colors.tx1 : Colors.tx2)
 
                         font {
