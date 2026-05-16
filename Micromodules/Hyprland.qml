@@ -8,6 +8,8 @@ import qs.Config
 Item {
     id: hyprland
 
+    property int workspaceSizeOffset: Style.barWidgetsMargin*3
+
     implicitWidth: background.width
     implicitHeight: background.height
 
@@ -20,11 +22,14 @@ Item {
         id: background
         anchors.centerIn: parent
         
-        width: contentHolder.width + Style.barMargin
+        width: contentHolder.width + workspaceSizeOffset/2
         height: Style.barWidgetsHeight
 
         radius: Style.barWidgetsRadius
         color: Colors.bg1
+
+        border.color: Colors.bg2
+        border.width: Style.barWidgetsBorderWidth
 
         RowLayout {
             id: contentHolder
@@ -36,24 +41,26 @@ Item {
             Repeater {
                 model: Hyprland.workspaces
                 delegate: Rectangle {
-                    id: hyprWorkspace
+                    //id: hyprWorkspace
                     
                     property var workspace: modelData
                     property bool isFocused: Hyprland.focusedWorkspace === workspace
                     property bool isHovered: false
 
-                    height: background.height - Style.barWidgetsMargin*2
+                    height: background.height - workspaceSizeOffset
                     width: height
                     Layout.margins: Style.barWidgetsMargin/2
-
                     radius: Style.barWidgetsRadius
 
                     color: isFocused? Colors.bg2 : ( isHovered? Colors.bg2 : Colors.bg1 )
+                    
+                    border.color: isFocused? Colors.fg1 : "transparent"
+                    border.width: Style.barWidgetsBorderWidth
 
                     Text {
                         anchors.centerIn: parent
 
-                        text: isFocused? "" : ""
+                        text: isFocused? "󱐋" : workspace.name
                         color: isFocused? Colors.tx1 : (isHovered? Colors.tx1 : Colors.tx2)
 
                         font {
@@ -69,6 +76,18 @@ Item {
                         onClicked: Hyprland.dispatch("workspace " + workspace.name)
                         onEntered: isHovered = true
                         onExited: isHovered = false
+                    }
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: Style.anim2
+                        }
+                    }
+
+                    Behavior on border.color {
+                        ColorAnimation {
+                            duration: Style.anim2
+                        }
                     }
                 }
 

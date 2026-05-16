@@ -2,6 +2,7 @@ Quick Ei is my custom Hyprland rice made with Quickshell. It is a personal leari
 As of now, it is pretty basic, but I will try to add more features later on.
 
 Features I plan on adding:
+- Top bar
 - Custom theme switcher (wallpaper + colors for Hyprland, Alacritty, Neovim)
 - Custom app launcher
 

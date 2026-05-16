@@ -14,6 +14,7 @@ QtObject {
     readonly property int barWidgetsMargin: style.margin4
     readonly property int barWidgetsHeight: style.barHeight - style.barWidgetsMargin*2
     readonly property int barWidgetsWidth: style.barWidgetsMargin*2
+    readonly property int barWidgetsBorderWidth: style.border4
 
     // Shapes
 
@@ -22,6 +23,13 @@ QtObject {
     readonly property int radius3: 8   // Standard container
     readonly property int radius4: 4   // Subtle rounding
     readonly property int radius5: 0   // Sharp corners
+
+    readonly property int border1: 5
+    readonly property int border2: 4
+    readonly property int border3: 3
+    readonly property int border4: 2
+    readonly property int border5: 1
+
 
     // Margins (External Spacing)
     readonly property int margin1: 24
@@ -59,8 +67,9 @@ QtObject {
     ]
 
     // Animations
-    readonly property int animSuperFast: 50
-    readonly property int animFast: 150
-    readonly property int animSlow: 300
-    readonly property int animSuperSlow: 500
+    readonly property int anim1: 50
+    readonly property int anim2: 150
+    readonly property int anim3: 225
+    readonly property int anim4: 300
+    readonly property int anim5: 500
 }

@@ -28,6 +28,9 @@ Item {
         radius: Style.barWidgetsRadius
         color: Colors.bg1
 
+        border.color: Colors.bg2
+        border.width: Style.barWidgetsBorderWidth
+        
         Column {
             id: contentHolder
             anchors.centerIn: parent
