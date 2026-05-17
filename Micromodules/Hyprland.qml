@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
+import Qt5Compat.GraphicalEffects
 
 import qs.Config
 
@@ -66,6 +67,14 @@ Item {
                         font {
                             pixelSize: Style.fontSize1;
                             family: Style.fontFamily
+                        }
+
+                        LinearGradient {
+                            anchors.fill: parent
+                            source: parent
+                            start: Qt.point(0, 0)
+                            end: Qt.point(0, parent.height)
+                            gradient: Style.gradTx1
                         }
 
                     }                    

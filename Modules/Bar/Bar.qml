@@ -34,7 +34,7 @@ PanelWindow {
 
         Item { Layout.fillWidth: true }
 
-        //Micromodules.Battery {}
+        Micromodules.Battery {}
 
     }
 }

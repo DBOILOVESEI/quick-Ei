@@ -2,6 +2,8 @@ pragma Singleton
 import QtQuick
 import Quickshell
 
+import qs.Config
+
 QtObject {
     id: style
 
@@ -60,16 +62,75 @@ QtObject {
     readonly property int fontWeight4: 300
     readonly property int fontWeight5: 100
 
-    // Gradients
-    readonly property list<GradientStop> gradientText: [
-        GradientStop { position: 0.0; color: Colors.fg2 },
-        GradientStop { position: 1.0; color: Colors.ac2 }
-    ]
-
     // Animations
     readonly property int anim1: 50
     readonly property int anim2: 150
     readonly property int anim3: 225
     readonly property int anim4: 300
     readonly property int anim5: 500
+
+    // Gradients
+
+    // ==========================================
+    // 2. UNIVERSAL GRADIENTS
+    // ==========================================
+
+    // --- BACKGROUND SERIES (Heavy / Foundation) ---
+    
+    // gradBg1: Subtle structural depth (Muted Indigo -> Deep Purple)
+    readonly property Gradient gradBg1: Gradient {
+        GradientStop { position: 0.0; color: Colors.bg2 }
+        GradientStop { position: 1.0; color: Colors.bg1 }
+    }
+
+    // gradBg2: Cyberpunk glass-edge effect (Translucent Indigo -> Translucent Violet Accent)
+    readonly property Gradient gradBg2: Gradient {
+        GradientStop { position: 0.0; color: Qt.rgba(Colors.bg2.r, Colors.bg2.g, Colors.bg2.b, 0.7) }
+        GradientStop { position: 1.0; color: Qt.rgba(Colors.ac2.r, Colors.ac2.g, Colors.ac2.b, 0.2) }
+    }
+
+
+    // --- TEXT / CONTENT SERIES (High Contrast / Readable) ---
+    
+    // gradTx1: Ethereal high-light (Pure Text -> Subdued Mauve Text)
+    readonly property Gradient gradTx1: Gradient {
+        GradientStop { position: 0.0; color: Colors.tx1 }
+        GradientStop { position: 1.0; color: Colors.tx2 }
+    }
+
+    // gradTx2: Neon pop for typography or icons (Electric Lavender -> Sakura Pink)
+    readonly property Gradient gradTx2: Gradient {
+        GradientStop { position: 0.0; color: Colors.fg1 }
+        GradientStop { position: 1.0; color: Colors.fg2 }
+    }
+
+
+    // --- ACCENT SERIES (Vibrant Highlights / Attention Grabbing) ---
+    
+    // gradAc1: Electric Prism (Sword Blade Violet -> Electric Lavender)
+    readonly property Gradient gradAc1: Gradient {
+        GradientStop { position: 0.0; color: Colors.ac2 }
+        GradientStop { position: 1.0; color: Colors.fg1 }
+    }
+
+    // gradAc2: Twilight Sunrise cross-mix (Lantern Glow Amber -> Sakura Pink)
+    readonly property Gradient gradAc2: Gradient {
+        GradientStop { position: 0.0; color: Colors.ac1 }
+        GradientStop { position: 1.0; color: Colors.fg2 }
+    }
+
+
+    // --- ALERT SERIES (Error States / Notifications) ---
+    
+    // gradEr1: Deep Crisis blend (Muted Rose -> Deep Crimson)
+    readonly property Gradient gradEr1: Gradient {
+        GradientStop { position: 0.0; color: Colors.er2 }
+        GradientStop { position: 1.0; color: Colors.er1 }
+    }
+
+    // gradEr2: Toxic Threat cross-mix (Deep Crimson -> Lantern Glow Amber)
+    readonly property Gradient gradEr2: Gradient {
+        GradientStop { position: 0.0; color: Colors.er1 }
+        GradientStop { position: 1.0; color: Colors.ac1 }
+    }
 }

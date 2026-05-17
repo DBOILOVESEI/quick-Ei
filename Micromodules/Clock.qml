@@ -60,16 +60,12 @@ Item {
                     pixelSize: Style.fontSize3
                 }
                 
-                // TODO: Move this to Style.qml later
                 LinearGradient {
                     anchors.fill: parent
                     source: parent
-                    start: Qt.point(parent.width/2, 0)
-                    end: Qt.point(parent.width/2, parent.height)
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Colors.fg2 }
-                        GradientStop { position: 1.0; color: Colors.ac2 }
-                    }
+                    start: Qt.point(0, 0)
+                    end: Qt.point(0, parent.height)
+                    gradient: Style.gradTx2
                 }
             }
         }

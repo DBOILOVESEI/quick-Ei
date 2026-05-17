@@ -8,7 +8,7 @@ Item {
     id: battery
 
     property var percent: UPower.displayDevice.percentage*100
-    property var updateInterval: 1000 // Five seconds so it doesn't loop too fast
+    property var updateInterval: 5000 // Five seconds so it doesn't loop too fast
     property var formats: {
         "10": {
             "icon": "",
@@ -22,7 +22,7 @@ Item {
 
         "100": {
             "icon": "",
-            "color": Colors.ac2
+            "color": Colors.tx1
         }
     }
     property var defaultFormatFallback: format["100"]
