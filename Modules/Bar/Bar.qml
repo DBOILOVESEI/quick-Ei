@@ -1,12 +1,15 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Hyprland
 
 import qs.Config
 
 import "../../Micromodules" as Micromodules
 
 PanelWindow {
+    id: bar
+
     height: Style.barHeight
     anchors {
         top: true
@@ -26,7 +29,7 @@ PanelWindow {
         anchors.bottomMargin: 0 
         anchors.fill: parent
 
-        Micromodules.Hyprland {}
+        Micromodules.HyprlandWorkspaces {}
         
         Item { Layout.fillWidth: true }
         

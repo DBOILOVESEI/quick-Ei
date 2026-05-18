@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Services.UPower
 
+import Qt5Compat.GraphicalEffects
+
 import qs.Config
 
 Item {
@@ -22,7 +24,7 @@ Item {
 
         "100": {
             "icon": "",
-            "color": Colors.tx1
+            "color": Colors.tx1,
         }
     }
     property var defaultFormatFallback: format["100"]

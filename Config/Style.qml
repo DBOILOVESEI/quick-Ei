@@ -70,11 +70,6 @@ QtObject {
     readonly property int anim5: 500
 
     // Gradients
-
-    // ==========================================
-    // 2. UNIVERSAL GRADIENTS
-    // ==========================================
-
     // --- BACKGROUND SERIES (Heavy / Foundation) ---
     
     // gradBg1: Subtle structural depth (Muted Indigo -> Deep Purple)
